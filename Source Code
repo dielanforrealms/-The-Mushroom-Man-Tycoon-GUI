@@ -47,7 +47,7 @@ function AutoMergePets()
     end
 end
 
-function AutoGiveBoosts()
+function AutoGiveBoostsAndSlimes()
     while getgenv().Settings["AutoGiveBoostsAndSlimes"] do 
         game:GetService("ReplicatedStorage").Remote.Event.ObbyRewardEvent:FireServer()
         task.wait(0.1)

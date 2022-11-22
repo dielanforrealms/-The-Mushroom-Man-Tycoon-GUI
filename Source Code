@@ -1,0 +1,115 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "The Mushroom Man Tycoon 🍄 | By dielan", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
+
+-- Values
+getgenv().Settings = {
+    ["AutoGiveSlimes"] = false,
+    ["AutoDeliverSlimes"] = false,
+    ["AutoUpgradeEfficiency"] = false,
+    ["AutoBuyPets"] = false,
+    ["AutoMergePets"] = false,
+    ["AutoGiveBoosts"] = false
+}
+-- Autofarm Functions
+function AutoGiveSlimes()
+    while getgenv().Settings["AutoGiveSlimes"] do 
+        game:GetService("ReplicatedStorage").Remote.Event.AddBabyEvent:FireServer(9e9)
+        task.wait(0.1)
+    end
+ end
+function AutoDeliverSlimes()
+    while getgenv().Settings["AutoDeliverSlimes"] do 
+        game:GetService("ReplicatedStorage").Remote.Event.DeliverEvent:FireServer()
+        task.wait(0.1)
+    end
+end
+function AutoUpgradeEfficiency()
+    while getgenv().Settings["AutoUpgradeEfficiency"] do 
+        game:GetService("ReplicatedStorage").Remote.Event.UpgradeEvent:FireServer()
+        task.wait(0.1)
+    end
+end
+
+function AutoBuyPets()
+    while getgenv().Settings["AutoBuyPets"] do 
+        game:GetService("ReplicatedStorage").Remote.Event.GenerateEvent:FireServer("1",false)
+        task.wait(0.1)
+    end
+end
+
+function AutoMergePets()
+    while getgenv().Settings["AutoMergePets"] do 
+        game:GetService("ReplicatedStorage").Remote.Event.CombineEvent:FireServer()
+        task.wait(0.1)
+    end
+end
+
+function AutoGiveBoosts()
+    while getgenv().Settings["AutoGiveBoosts"] do 
+        game:GetService("ReplicatedStorage").Remote.Event.ObbyRewardEvent:FireServer()
+        task.wait(0.1)
+    end
+end
+
+--Tab
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--Toggles
+MainTab:AddToggle({
+	Name = "Auto Give Inf Slimes",
+	Default = false,
+	Callback = function(Value)
+		getgenv().Settings["AutoGiveSlimes"] = Value
+        AutoGiveSlimes()
+    end
+})
+
+MainTab:AddToggle({
+	Name = "Auto Deliver Slimes",
+	Default = false,
+	Callback = function(Value)
+		getgenv().Settings["AutoDeliverSlimes"] = Value
+        AutoDeliverSlimes()
+    end
+})
+
+MainTab:AddToggle({
+	Name = "Auto Upgrade Efficiency",
+	Default = false,
+	Callback = function(Value)
+		getgenv().Settings["AutoUpgradeEfficiency"] = Value
+        AutoUpgradeEfficiency()
+    end
+})
+
+MainTab:AddToggle({
+	Name = "Auto Buy Slimes",
+	Default = false,
+	Callback = function(Value)
+		getgenv().Settings["AutoBuyPets"] = Value
+        AutoBuyPets()
+    end
+})
+
+MainTab:AddToggle({
+	Name = "Auto Merge Slimes",
+	Default = false,
+	Callback = function(Value)
+		getgenv().Settings["AutoMergePets"] = Value
+        AutoMergePets()
+    end
+})
+
+MainTab:AddToggle({
+	Name = "Auto Give Boosts And Slimes",
+	Default = false,
+	Callback = function(Value)
+		getgenv().Settings["AutoGiveBoosts"] = Value
+        AutoGiveBoosts()
+    end
+})
+OrionLib:Init()

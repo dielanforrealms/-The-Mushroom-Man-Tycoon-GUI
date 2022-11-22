@@ -8,8 +8,9 @@ getgenv().Settings = {
     ["AutoUpgradeEfficiency"] = false,
     ["AutoBuyPets"] = false,
     ["AutoMergePets"] = false,
-    ["AutoGiveBoosts"] = false
+    ["AutoGiveBoostsAndSlimes"] = false
 }
+
 -- Autofarm Functions
 function AutoGiveSlimes()
     while getgenv().Settings["AutoGiveSlimes"] do 
@@ -45,7 +46,7 @@ function AutoMergePets()
 end
 
 function AutoGiveBoosts()
-    while getgenv().Settings["AutoGiveBoosts"] do 
+    while getgenv().Settings["AutoGiveBoostsAndSlimes"] do 
         game:GetService("ReplicatedStorage").Remote.Event.ObbyRewardEvent:FireServer()
         task.wait(0.1)
     end
@@ -108,8 +109,8 @@ MainTab:AddToggle({
 	Name = "Auto Give Boosts And Slimes",
 	Default = false,
 	Callback = function(Value)
-		getgenv().Settings["AutoGiveBoosts"] = Value
-        AutoGiveBoosts()
+		getgenv().Settings["AutoGiveBoostsAndSlimes"] = Value
+        AutoGiveBoostsAndSlimes()
     end
 })
 OrionLib:Init()

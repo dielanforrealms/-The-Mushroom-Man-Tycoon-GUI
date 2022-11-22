@@ -11,10 +11,10 @@ getgenv().Settings = {
     ["AutoGiveBoostsAndSlimes"] = false
 }
 
--- Autofarm Functions
+-- Functions
 function AutoGiveSlimes()
     while getgenv().Settings["AutoGiveSlimes"] do 
-        game:GetService("ReplicatedStorage").Remote.Event.AddBabyEvent:FireServer(99e9)
+        game:GetService("ReplicatedStorage").Remote.Event.AddBabyEvent:FireServer(999999e9)
         task.wait(0.1)
     end
 end
@@ -54,14 +54,25 @@ function AutoGiveBoostsAndSlimes()
     end
 end
 
---Tab
+-- Tab
 local MainTab = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
---Toggles
+-- Buttons
+MainTab:AddButton({
+	Name = "Redeem All Current Codes",
+	Callback = function()
+        local Codes = { "Welcome" , "Dragon" , "Naruto" , "Sasuke" , "Super" , "Panda" , "Like" }
+        for i,v in pairs(Codes) do
+        game:GetService("ReplicatedStorage").Remote.Event.GiftCodeEvent:FireServer(v)
+        end
+  	end    
+})
+
+-- Toggles
 MainTab:AddToggle({
 	Name = "Auto Give Inf Slimes",
 	Default = false,

@@ -14,7 +14,7 @@ getgenv().Settings = {
 -- Functions
 function AutoGiveSlimes()
     while getgenv().Settings["AutoGiveSlimes"] do 
-        game:GetService("ReplicatedStorage").Remote.Event.AddBabyEvent:FireServer(999999e9)
+        game:GetService("ReplicatedStorage").Remote.Event.AddBabyEvent:FireServer(999999999999999999999999999999999999999999999999999999999999999999999999e9)
         task.wait(0.1)
     end
 end
